@@ -1,4 +1,5 @@
 ﻿using Org.Common;
+using Org.Common.Mvc;
 using Org.Service;
 using System;
 using System.Collections.Generic;
@@ -8,17 +9,27 @@ using System.Web.Mvc;
 
 namespace Org.SuperMall.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        //
-        // GET: /Home/
-        ISubjectGradeService subService = ServiceUtil.GetService<ISubjectGradeService>();
-
+        ISubjectGradeService sgService = ServiceUtil.GetService<ISubjectGradeService>();
         public ActionResult Index()
         {
-            var model = subService.GetSudentGrades();
-            return View(model);
+            var model = sgService.GetSudentGrades();
+            return View(model.Result);
         }
 
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }
