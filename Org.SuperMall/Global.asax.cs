@@ -12,6 +12,7 @@ namespace Org.SuperMall
     {
         protected void Application_Start()
         {
+            ModelMetadataProviders.Current = new EmptyModelMetadataProvider();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
